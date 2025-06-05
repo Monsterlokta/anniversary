@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ffe5d4;
+        margin: 0;
+        padding: 0;
+        color: #4b2e2e;
+        }
+    header  {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #ffcab0;
+    }
+    header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+        header p {
+        font-size: 1.2rem;
+        }
+        .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+        }
+        .message {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        text-align: center;
+        }
+        .photo {
+        margin: 30px 0;
+        text-align: center;
+        }
+        .photo img {
+        max-width: 90%;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #ffcdb2;
+        font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1>Happy 2-Month Anniversary!</h1>
+    <p>💑 <strong>Phaa</strong> & <strong>Juliena</strong> 💖</p>
+    <p>04/07/25-06/07/25</p>
+    </header>
+
+    <div class="container">
+        <div class="message">
+            <p>
+                Two months ago, something beautiful began — you and me.
+
+Every day with you feels like a dream I never want to wake up from. In just 60 days, you've filled my heart with laughter, warmth, and love I never knew I needed so deeply.
+
+You are my sunshine on rainy days, my calm in the storm, and my favorite hello. I treasure every smile, every moment, and every little memory we’ve made together.
+
+I can’t wait to see where this love takes us, hand in hand, heart to heart.
+
+Happy 2-Month Anniversary, my love. This is only the beginning. 💖
+            </p>
+        </div>
+        <div class="photo">
+            <img src="mypic.jpg" alt="Anniversary Photo">
+        </div>
+    </div>
+
+    <div style="text-align:center; margin-bottom: 20px;">
+        <button onclick="showSweetMessage()" style="background:#ffb4a2;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;cursor:pointer;">
+            Click for a sweet message 💌
+        </button>
+        <div id="sweet-message" style="margin-top:16px;font-size:1.2rem;color:#b5838d;"></div>
+    </div>
+
+    <audio id="bg-music" src="Baby Mama.mp3" loop></audio>
+    <button onclick="document.getElementById('bg-music').play()" style="background:#b5838d;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:1rem;cursor:pointer;margin-bottom:10px;">
+        Play Our Song 🎵
+    </button>
+    <button onclick="document.getElementById('bg-music').pause();document.getElementById('bg-music').currentTime=0;" style="background:#b5838d;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:1rem;cursor:pointer;margin-bottom:10px;">
+        Stop Music ⏹️
+    </button>
+
+    <div id="countdown" style="text-align:center;font-size:1.1rem;color:#b5838d;margin-bottom:16px;"></div>
+
+    <div style="text-align:center;margin:20px 0;">
+    <input id="partner-message" type="text" placeholder="Write your message..." style="padding:8px;border-radius:6px;border:1px solid #ccc;">
+    <button onclick="showPartnerMessage()" style="background:#ffb4a2;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:1rem;cursor:pointer;">Send 💌</button>
+    <div id="display-partner-message" style="margin-top:10px;font-size:1.1rem;color:#b5838d;"></div>
+</div>
+
+    <div style="text-align:center;margin:20px 0;">
+    <button onclick="showCompliment()" style="background:#b5838d;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:1rem;cursor:pointer;">Random Compliment 🌸</button>
+    <div id="compliment" style="margin-top:10px;font-size:1.1rem;color:#b5838d;"></div>
+    <div style="text-align:center;margin:20px 0;">
+    <button onclick="showNickname()" style="background:#b5838d;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:1rem;cursor:pointer;">
+        Get Your Nickname 💖
+    </button>
+    <div id="nickname" style="margin-top:10px;font-size:1.1rem;color:#b5838d;"></div>
+</div>
+</div>
+
+    <div class="photo-slideshow" style="text-align:center;margin:30px 0;">
+    <!-- Only ONE image element for the slideshow -->
+    <img id="slideshow-img" src="pic1.jpg" alt="Slideshow"
+            style="max-width:300px; width:90%; border-radius:20px; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onerror="this.src='placeholder.jpg'">
+    <div>
+        <button onclick="prevPhoto()" style="margin:10px;">⏮️</button>
+        <button onclick="nextPhoto()" style="margin:10px;">⏭️</button>
+    </div>
+</div>
+
+<!-- Add this for floating hearts! -->
+<div id="floating-hearts"></div>
+
+<footer>
+With love, always. ❤️<br>
+"Two Months Down, Forever to Go!"<br>
+</footer>
+
+<div style="max-width:400px;margin:30px auto;">
+    <div style="background:#ffe5d4;border-radius:10px;overflow:hidden;">
+        <div id="love-progress" style="background:#ffb4a2;height:24px;width:0%;transition:width 2s;"></div>
+    </div>
+    <div id="progress-label" style="text-align:center;margin-top:8px;color:#b5838d;"></div>
+</div>
+
+<script>
+    // Show a welcome popup when the page loads
+    window.onload = function() {
+        alert("Happy 2-Month Anniversary, Phaa & Juliena! 💖");
+    };
+
+    // Array of sweet messages
+    const sweetMessages = [
+        "You make every day brighter! 🌞",
+        "I love you more with each passing day. 💕",
+        "Thank you for being my everything. 🥰",
+        "Here's to many more months together! 🎉",
+        "You are my favorite person. 😘",
+        "Every moment with you is a treasure. 💎",
+        "You are my heart’s favorite melody. 🎶",
+        "With you, forever doesn’t seem long enough. ⏳",
+        "You’re the reason I smile every day. 😊",
+        "I fall in love with you all over again, every single day. 💗"
+    ];
+
+    // Array of heart emojis
+    const hearts = ["💖", "💘", "💝", "💞", "💕", "💓", "💗", "❤️", "🧡", "💜", "💙", "💚"];
+
+    // Function to show a random sweet message with a random heart
+    function showSweetMessage() {
+        const msg = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
+        const heart = hearts[Math.floor(Math.random() * hearts.length)];
+        typeWriter(msg + " " + heart, "sweet-message");
+        launchConfetti();
+    }
+
+    // Typewriter effect function
+    function typeWriter(text, elementId, i = 0) {
+        const el = document.getElementById(elementId);
+        el.innerText = text.substring(0, i);
+        if (i < text.length) {
+            setTimeout(() => typeWriter(text, elementId, i + 1), 40);
+        }
+    }
+
+    // Simple confetti effect
+    function launchConfetti() {
+        const confettiContainer = document.createElement("div");
+        confettiContainer.style.position = "fixed";
+        confettiContainer.style.left = 0;
+        confettiContainer.style.top = 0;
+        confettiContainer.style.width = "100vw";
+        confettiContainer.style.height = "100vh";
+        confettiContainer.style.pointerEvents = "none";
+        confettiContainer.style.zIndex = 9999;
+
+        for (let i = 0; i < 40; i++) {
+            const conf = document.createElement("div");
+            conf.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            conf.style.position = "absolute";
+            conf.style.left = Math.random() * 100 + "vw";
+            conf.style.top = "-2vh";
+            conf.style.fontSize = (Math.random() * 1.5 + 1) + "rem";
+            conf.style.opacity = Math.random() * 0.5 + 0.5;
+            conf.style.transition = "top 2s linear, left 2s linear";
+            confettiContainer.appendChild(conf);
+
+            setTimeout(() => {
+                conf.style.top = "100vh";
+                conf.style.left = (parseFloat(conf.style.left) + (Math.random() * 40 - 20)) + "vw";
+            }, 10);
+        }
+
+        document.body.appendChild(confettiContainer);
+
+        setTimeout(() => {
+            confettiContainer.remove();
+        }, 2200);
+    }
+
+    function createFloatingHearts() {
+    const container = document.getElementById('floating-hearts');
+    container.style.position = 'fixed';
+    container.style.top = 0;
+    container.style.left = 0;
+    container.style.width = '100vw';
+    container.style.height = '100vh';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = 1;
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.position = 'absolute';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.bottom = '-30px';
+        heart.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+        heart.style.opacity = 0.7;
+        heart.style.transition = 'bottom 6s linear, opacity 6s linear';
+        container.appendChild(heart);
+        setTimeout(() => {
+            heart.style.bottom = '100vh';
+            heart.style.opacity = 0;
+        }, 10);
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 800);
+}
+createFloatingHearts();
+
+    window.onbeforeunload = function() {
+        const music = document.getElementById('bg-music');
+        if (music) {
+            music.pause();
+            music.currentTime = 0;
+        }
+    };
+
+    function updateCountdown() {
+    const start = new Date("2025-07-04");
+    const now = new Date();
+    let nextAnniv = new Date(start);
+    // Find the next monthly anniversary
+    while (nextAnniv < now) {
+        nextAnniv.setMonth(nextAnniv.getMonth() + 1);
+    }
+    const diff = nextAnniv - now;
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    document.getElementById('countdown').innerText =
+        days > 0 ? `Only ${days} day(s) until our next month together! 💞` : "Happy Anniversary! 🎉";
+}
+updateCountdown();
+setInterval(updateCountdown, 3600000); // Update every hour
+
+function showPartnerMessage() {
+    const msg = document.getElementById('partner-message').value;
+    if (msg.trim()) {
+        document.getElementById('display-partner-message').innerText = "💌 " + msg;
+        document.getElementById('partner-message').value = "";
+    }
+}
+
+const compliments = [
+    "You light up my world! ✨",
+    "Your smile is my favorite thing.",
+    "You make every day better.",
+    "I’m so lucky to have you.",
+    "You are my everything."
+];
+function showCompliment() {
+    document.getElementById('compliment').innerText = compliments[Math.floor(Math.random() * compliments.length)];
+}
+
+// Photo slideshow functionality
+const photos = [
+    "pic1.jpg",
+    "pic2.jpg",
+    "pic3.jpg",
+    "pic4.jpg",
+    "pic5.jpg",
+    "pic6.jpg",
+    "pic7.jpg",
+    "pic8.jpg",
+    "pic9.jpg",
+    "pic10.jpg",
+    "pic11.jpg",
+    "pic12.jpg",
+    "pic13.jpg",
+    "pic14.jpg",
+    "pic15.jpg"
+];
+let photoIndex = 0;
+function showPhoto(idx) {
+    document.getElementById('slideshow-img').src = photos[idx];
+}
+function prevPhoto() {
+    photoIndex = (photoIndex - 1 + photos.length) % photos.length;
+    showPhoto(photoIndex);
+}
+function nextPhoto() {
+    photoIndex = (photoIndex + 1) % photos.length;
+    showPhoto(photoIndex);
+}
+showPhoto(photoIndex);
+
+let slideshowInterval = setInterval(() => {
+    nextPhoto();
+}, 2000); // Change every 4 seconds
+
+// Pause on hover
+document.getElementById('slideshow-img').addEventListener('mouseenter', () => clearInterval(slideshowInterval));
+document.getElementById('slideshow-img').addEventListener('mouseleave', () => {
+    slideshowInterval = setInterval(() => nextPhoto(), 4000);
+});
+
+function updateLoveProgress() {
+    const start = new Date("2025-07-04");
+    const now = new Date();
+    const diff = now - start;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const percent = Math.min((days / 60) * 100, 100); // 60 days for 2 months
+    document.getElementById('love-progress').style.width = percent + "%";
+    document.getElementById('progress-label').innerText = `Day ${days} of our journey!`;
+}
+updateLoveProgress();
+
+function heartRain() {
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-40px';
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            heart.style.opacity = 0.8;
+            heart.style.transition = 'top 2.5s linear, opacity 2.5s linear';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.style.top = '100vh';
+                heart.style.opacity = 0;
+            }, 10);
+            setTimeout(() => {
+                heart.remove();
+            }, 2600);
+        }, i * 80);
+    }
+}
+
+const nicknames = [
+    "Ah Mabb", "Ah kbal khoch", "Honey", "Bao Bei", "Sweetheart", "Darling", "Angel", "Cutie Pie"
+];
+function showNickname() {
+    document.getElementById('nickname').innerText = "Your nickname: " + nicknames[Math.floor(Math.random() * nicknames.length)];
+}
+</script>
+</body>
+</html>
